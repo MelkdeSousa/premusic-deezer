@@ -1,1 +1,1 @@
-# premusic-deezer
+# Premusic - Deezer
