@@ -4,3 +4,5 @@ export const theme = {
     secondary: '#E0349B',
     white: '#EFEDF9'
 }
+
+export type ThemeType = typeof theme

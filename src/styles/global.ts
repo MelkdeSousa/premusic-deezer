@@ -11,7 +11,7 @@ export default createGlobalStyle`
   :root {
     font-size: 62.5%;
     font-family: Ubuntu;
-    background: #0E1B3B;
-    color: #def;
+    background: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.white};
   }
 `
