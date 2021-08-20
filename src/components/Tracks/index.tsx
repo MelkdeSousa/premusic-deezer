@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Tracks as TypeTracks } from '../../@types'
 import deezerAPI from '../../services/deezer.api'
+import MusicCard from '../MusicCard'
 
 import { Container } from './styles'
 
@@ -25,16 +26,9 @@ const Tracks = () => {
 
   return (
     <Container>
-      <ul>
-        {topMusics.map(music => (
-          <li key={music.id}>
-            <img src={music.artist.picture} alt={music.artist.name} />
-            <span>{music.title}</span>
-            <span>{music.artist.name}</span>
-            <audio src={music.preview}></audio>
-          </li>
-        ))}
-      </ul>
+      {topMusics.map(music => (
+        <MusicCard music={music} key={music.id} />
+      ))}
     </Container>
   )
 }
