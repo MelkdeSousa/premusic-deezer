@@ -26,7 +26,7 @@ export const Title = styled.h1`
 
   color: ${({ theme }) => theme.white};
 
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 .4rem .4rem rgba(0, 0, 0, 0.25);
 `
 
 export const LogoDeezer = styled.img.attrs({
