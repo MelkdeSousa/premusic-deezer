@@ -44,6 +44,7 @@ export const Name = styled.span`
     font-weight: 400;
 
     color: ${({ theme }) => theme.background};
+    font-size: 1.6rem;
 `
 
 export const Like = styled.img.attrs({ src: heartOutlined })`

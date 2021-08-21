@@ -17,10 +17,8 @@ export const Container = styled.div`
 
 export const Title = styled.h1`
   font-family: Ubuntu;
-  font-style: normal;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 4.8rem;
-  line-height: 5.6rem;
   
   display: flex;
   align-items: center;
