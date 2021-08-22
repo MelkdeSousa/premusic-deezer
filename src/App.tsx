@@ -1,8 +1,9 @@
 import React from 'react'
-import Home from './pages/Home'
+
+import Tops from './pages/Tops'
 
 const App = () => {
-  return <Home />
+  return <Tops />
 }
 
 export default App
