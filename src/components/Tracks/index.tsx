@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
-import { Tracks as TypeTracks } from '../../@types'
-
+import { Track, Tracks as TypeTracks } from '../../@types'
+import { RootState } from '../../store'
 import deezerAPI from '../../services/deezer.api'
-import MusicCard from '../MusicCard'
+
 import Tabs from '../Tabs'
 
 import { Container, Wrapper } from './styles'
+import MusicCard from '../MusicCard'
 
 const Tracks = () => {
   const [topMusics, setTopMusics] = useState<TypeTracks>([])
+
+  const { data } = useSelector((state: RootState) => state.search)
 
   const loadTopMusics = async () => {
     try {
@@ -23,6 +27,10 @@ const Tracks = () => {
     }
   }
 
+  const listMusics = (music: Track) => (
+    <MusicCard music={music} key={music.id} />
+  )
+
   useEffect(() => {
     loadTopMusics()
   }, [])
@@ -31,9 +39,7 @@ const Tracks = () => {
     <Wrapper>
       <Tabs />
       <Container>
-        {topMusics.map(music => (
-          <MusicCard music={music} key={music.id} />
-        ))}
+        {data.length === 0 ? topMusics.map(listMusics) : data.map(listMusics)}
       </Container>
     </Wrapper>
   )
