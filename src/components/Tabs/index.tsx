@@ -7,14 +7,26 @@ import heart from '../../assets/icons/heart.svg'
 import Tab from '../Tab'
 
 import { Container } from './styles'
+import { useHistory } from 'react-router-dom'
 
 const Tabs = () => {
   const { primary, secondary } = useTheme()
+  const history = useHistory()
 
   return (
     <Container>
-      <Tab title='Tops' icon={sparkle} titleColor={primary} />
-      <Tab title='Like' icon={heart} titleColor={secondary} />
+      <Tab
+        onClick={() => history.push('/tops')}
+        title='Tops'
+        icon={sparkle}
+        titleColor={primary}
+      />
+      <Tab
+        onClick={() => history.push('/likes')}
+        title='Like'
+        icon={heart}
+        titleColor={secondary}
+      />
     </Container>
   )
 }
