@@ -15,11 +15,11 @@
 
 ### Home:
 
-- Should show list main songs of the moment;
-- Should exist a field to search by text, where we can search by album, artist, or music title;
-- When performing a search, the initial listing must be replaced by the listing referring to the search. (Use same listing component)
+- [x] Should show list main songs of the moment;
+- [x] Should exist a field to search by text, where we can search by album, artist, or music title;
+- [x] When performing a search, the initial listing must be replaced by the listing referring to the search. (Use same listing component)
 - The items of list should show:
-  - Music data like (album cover, title, singer, duration);
+  - [x] Music data like (album cover, title, singer, duration);
   - A button to access the full song on Deezer;
   - A play/pause button to listen to the music preview;
   - A button to add the song to favorite music list;
