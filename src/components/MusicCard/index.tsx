@@ -2,10 +2,17 @@ import React from 'react'
 
 import { Track } from '../../@types'
 
-import { Container, Thumb, Artist, Title, Name, Like } from './styles'
+import { Container, Thumb, Artist, Title, Name, LikeButton } from './styles'
 
 type MusicCardProps = {
   music: Track
+}
+
+const secondsToMinutesAndSeconds = (time: number) => {
+  const minutes = Math.floor(time / 60)
+  const seconds = Math.floor(time - minutes * 60)
+
+  return `${minutes}:${seconds}`
 }
 
 const MusicCard = ({ music }: MusicCardProps) => {
@@ -13,10 +20,17 @@ const MusicCard = ({ music }: MusicCardProps) => {
     <Container>
       <Thumb src={music.artist.picture} alt={music.artist.name} />
       <Artist>
-        <Title>{music.title}</Title>
+        <Title>
+          {music.title}
+          <Name>
+            {'\t|\t'}
+            {secondsToMinutesAndSeconds(music.duration)}
+          </Name>
+        </Title>
+
         <Name>{music.artist.name}</Name>
       </Artist>
-      <Like />
+      <LikeButton />
     </Container>
   )
 }
