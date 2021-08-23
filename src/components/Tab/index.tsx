@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 
 import { Container, Icon, Title } from './styles'
 
-interface TabProps {
+type TabProps = {
   title: string
   icon: string
   titleColor: string
-}
+} & HTMLAttributes<HTMLDivElement>
 
-const Tab = ({ title, icon, titleColor }: TabProps) => {
+const Tab = ({ title, icon, titleColor, ...props }: TabProps) => {
   return (
-    <Container>
+    <Container {...props}>
       <Icon src={icon} />
       <Title color={titleColor}>{title}</Title>
     </Container>
