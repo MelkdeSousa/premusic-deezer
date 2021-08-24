@@ -10,9 +10,10 @@ import MusicCard from '../MusicCard'
 type TracksProps = {
   musics: TypeTracks
   type: string
+  refEnd?: React.Ref<HTMLLIElement> | undefined
 }
 
-const Tracks = ({ musics, type }: TracksProps) => {
+const Tracks = ({ musics, type, refEnd }: TracksProps) => {
   const renderMusics = (music: Track) => (
     <MusicCard type={type} music={music} key={music.id} />
   )
@@ -29,6 +30,7 @@ const Tracks = ({ musics, type }: TracksProps) => {
             😣{' '}
           </Error>
         )}
+        <li ref={refEnd} />
       </Container>
     </Wrapper>
   )

@@ -33,5 +33,5 @@
 
 - [x] List songs should are in Redux Store
   - [x] Can save in browser (localstorage)
-- Pagination to list songs from API
-- Infinity scroll in songs list
+- [x] Pagination to list songs from API
+- [x] Infinity scroll in songs list

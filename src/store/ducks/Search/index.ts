@@ -4,10 +4,18 @@ import { Track, Tracks } from '../../../@types'
 
 import deezerAPI from '../../../services/deezer.api'
 
+type SearchByTermThunk = {
+  query: string
+  index?: number
+  limit?: number
+}
+
 export const searchByTermThunk = createAsyncThunk(
   '@search/searchByTerm',
-  async (query: string) => {
-    const { data } = await deezerAPI(`search?q=${query}`)
+  async ({ query, index = 0, limit = 10 }: SearchByTermThunk) => {
+    const { data } = await deezerAPI(
+      `search?q=${query}&index=${index}&limit=${limit}`
+    )
     return data
   }
 )
@@ -17,11 +25,13 @@ export const searchSlice = createSlice({
   initialState: {
     data: [] as Tracks,
     loading: false,
+    query: '',
     error: null
   },
   reducers: {},
   extraReducers: build => {
-    build.addCase(searchByTermThunk.pending, (state, _action) => {
+    build.addCase(searchByTermThunk.pending, (state, action) => {
+      state.query = action.meta.arg.query
       state.loading = true
     })
 

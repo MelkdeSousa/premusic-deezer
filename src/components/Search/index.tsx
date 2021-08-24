@@ -14,7 +14,7 @@ const Search = () => {
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    if (query) dispatch(searchByTermThunk(query))
+    if (query) dispatch(searchByTermThunk({ query }))
   }
 
   return (
