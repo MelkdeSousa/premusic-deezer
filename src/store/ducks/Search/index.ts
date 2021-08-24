@@ -1,6 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { Track, Tracks } from '../../../@types'
+import { Tracks } from '../../../@types'
 
 import deezerAPI from '../../../services/deezer.api'
 
@@ -13,10 +13,14 @@ type SearchByTermThunk = {
 export const searchByTermThunk = createAsyncThunk(
   '@search/searchByTerm',
   async ({ query, index = 0, limit = 10 }: SearchByTermThunk) => {
-    const { data } = await deezerAPI(
-      `search?q=${query}&index=${index}&limit=${limit}`
-    )
-    return data
+    try {
+      const { data } = await deezerAPI(
+        `search?q=${query}&index=${index}&limit=${limit}`
+      )
+      return data
+    } catch (err) {
+      alert(err)
+    }
   }
 )
 
@@ -29,16 +33,20 @@ export const searchSlice = createSlice({
     error: null
   },
   reducers: {},
-  extraReducers: build => {
-    build.addCase(searchByTermThunk.pending, (state, action) => {
+  extraReducers: builder => {
+    builder.addCase(searchByTermThunk.pending, (state, action) => {
       state.query = action.meta.arg.query
       state.loading = true
     })
 
-    build.addCase(searchByTermThunk.fulfilled, (state, action) => {
-      console.log(action.payload)
-      state.data = action.payload as Track[]
-    })
+    builder.addCase(
+      searchByTermThunk.fulfilled,
+      (state, action: PayloadAction<Tracks>) => {
+        state.data.push(...action.payload)
+      }
+    )
+
+    builder.addCase(searchByTermThunk.rejected, (state, action) => {})
   }
 })
 
