@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 import heartOutlined from '../../assets/icons/heart-outlined.svg'
+import play from '../../assets/icons/play.svg'
+import pause from '../../assets/icons/pause.svg'
+import logoDeezer from '../../assets/images/logo-deezer.svg'
 
 export const Container = styled.div`
   width: 42rem;
@@ -8,12 +11,17 @@ export const Container = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 
   padding: 2.4rem 1.6rem;
 
   background: ${({ theme }) => theme.white};
   box-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
   border-radius: 2.4rem;
+
+  & > img {
+    cursor: pointer;
+  }
 `
 
 export const Thumb = styled.img`
@@ -25,6 +33,8 @@ export const Thumb = styled.img`
 `
 
 export const Artist = styled.div`
+  width: inherit;
+
   display: flex;
   flex-direction: column;
 
@@ -47,12 +57,42 @@ export const Name = styled.span`
   font-size: 1.6rem;
 `
 
+export const Actions = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1.6rem;
+`
+
 export const Like = styled.img.attrs({ src: heartOutlined })`
   width: 4rem;
   height: auto;
 
-  margin-left: auto;
   cursor: pointer;
 `
 
 export const LikeButton = styled(Like)``
+
+export const ToDeezer = styled.a``
+
+export const PlayerPreview = styled.audio``
+
+export const LogoDeezer = styled.img.attrs({
+  src: logoDeezer
+})`
+  width: 4.8rem;
+  height: auto;
+`
+
+export const Play = styled.img.attrs({ src: play })`
+  width: 3.2rem;
+  height: auto;
+  margin: 0 1.6rem;
+`
+
+export const Pause = styled.img.attrs({ src: pause })`
+  width: 3.2rem;
+  height: auto;
+  margin: 0 1.6rem;
+`
