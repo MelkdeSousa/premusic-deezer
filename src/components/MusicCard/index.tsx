@@ -1,6 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { Track } from '../../@types'
+import { removeTrack, addTrack } from '../../store/ducks/Like'
+
+import heart from '../../assets/icons/heart.svg'
+import heartOutlined from '../../assets/icons/heart-outlined.svg'
 
 import {
   Container,
@@ -16,9 +21,11 @@ import {
   Play,
   Pause
 } from './styles'
+import { RootState } from '../../store'
 
 type MusicCardProps = {
   music: Track
+  type: string
 }
 
 const secondsToMinutesAndSeconds = (time: number) => {
@@ -28,7 +35,12 @@ const secondsToMinutesAndSeconds = (time: number) => {
   return `${minutes}:${seconds}`
 }
 
-const MusicCard = ({ music }: MusicCardProps) => {
+const MusicCard = ({ music, type }: MusicCardProps) => {
+  const dispatch = useDispatch()
+  const tracks = useSelector((state: RootState) => state.like.tracks)
+
+  console.log()
+
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 
@@ -61,16 +73,24 @@ const MusicCard = ({ music }: MusicCardProps) => {
           onPause={() => setIsPlaying(false)}
         />
       )}
-      {
-        // eslint-disable-next-line multiline-ternary
-        isPlaying ? (
-          <Pause onClick={() => setIsPlaying(false)} />
-        ) : (
-          <Play onClick={() => setIsPlaying(true)} />
-        )
-      }
+      {isPlaying ? (
+        <Pause onClick={() => setIsPlaying(false)} />
+      ) : (
+        <Play onClick={() => setIsPlaying(true)} />
+      )}
       <Actions>
-        <LikeButton />
+        <LikeButton
+          src={
+            type === 'like' || tracks.some(track => track.id === music.id)
+              ? heart
+              : heartOutlined
+          }
+          onClick={
+            type === 'like' || tracks.some(track => track.id === music.id)
+              ? () => dispatch(removeTrack(music))
+              : () => dispatch(addTrack(music))
+          }
+        />
         <ToDeezer href={music.link} target='_blank'>
           <LogoDeezer />
         </ToDeezer>

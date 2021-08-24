@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import searchReducer from './ducks/Search'
+import likeReducer from './ducks/Like'
 
 const store = configureStore({
   reducer: {
-    search: searchReducer
+    search: searchReducer,
+    like: likeReducer
   }
 })
 

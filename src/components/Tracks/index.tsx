@@ -1,45 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
 
 import { Track, Tracks as TypeTracks } from '../../@types'
-import { RootState } from '../../store'
-import deezerAPI from '../../services/deezer.api'
 
 import Tabs from '../Tabs'
 
-import { Container, Wrapper } from './styles'
+import { Container, Error, Wrapper } from './styles'
 import MusicCard from '../MusicCard'
 
-const Tracks = () => {
-  const [topMusics, setTopMusics] = useState<TypeTracks>([])
+type TracksProps = {
+  musics: TypeTracks
+  type: string
+}
 
-  const { data } = useSelector((state: RootState) => state.search)
-
-  const loadTopMusics = async () => {
-    try {
-      const {
-        tracks: { data: musics }
-      } = await deezerAPI('chart')
-
-      setTopMusics(musics)
-    } catch (err) {
-      alert(err)
-    }
-  }
-
-  const listMusics = (music: Track) => (
-    <MusicCard music={music} key={music.id} />
+const Tracks = ({ musics, type }: TracksProps) => {
+  const renderMusics = (music: Track) => (
+    <MusicCard type={type} music={music} key={music.id} />
   )
-
-  useEffect(() => {
-    loadTopMusics()
-  }, [])
 
   return (
     <Wrapper>
       <Tabs />
       <Container>
-        {data.length === 0 ? topMusics.map(listMusics) : data.map(listMusics)}
+        {musics.length ? (
+          musics.map(renderMusics)
+        ) : (
+          <Error>
+            Você não favoritou nenhuma música <br />
+            😣{' '}
+          </Error>
+        )}
       </Container>
     </Wrapper>
   )

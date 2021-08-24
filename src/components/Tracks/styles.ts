@@ -46,3 +46,15 @@ export const Container = styled.ul`
     list-style: none;
   }
 `
+
+export const Error = styled.h1`
+  font-family: Ubuntu;
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 3.7rem;
+  text-align: center;
+
+  margin: 16vh 0;
+
+  color: ${({ theme }) => theme.white};
+`

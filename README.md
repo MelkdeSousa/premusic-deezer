@@ -20,18 +20,18 @@
 - [x] When performing a search, the initial listing must be replaced by the listing referring to the search. (Use same listing component)
 - The items of list should show:
   - [x] Music data like (album cover, title, singer, duration);
-  - A button to access the full song on Deezer;
-  - A play/pause button to listen to the music preview;
-  - A button to add the song to favorite music list;
+  - [x] A button to access the full song on Deezer;
+  - [x] A play/pause button to listen to the music preview;
+  - [x] A button to add the song to favorite music list;
 
 ### Musics of user:
 
-- The list with the songs chosen by the user will be displayed on the main screen.
-- The listing should be similar to the one on the home screen, but it should show the button to remove from the favorites list.
+- [x] The list with the songs chosen by the user will be displayed on the main screen.
+- [x] The listing should be similar to the one on the home screen, but it should show the button to remove from the favorites list.
 
 ## Tips:
 
-- List songs should are in Redux Store
-  - Can save in browser (localstorage)
+- [x] List songs should are in Redux Store
+  - [x] Can save in browser (localstorage)
 - Pagination to list songs from API
 - Infinity scroll in songs list

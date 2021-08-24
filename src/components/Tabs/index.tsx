@@ -23,7 +23,7 @@ const Tabs = () => {
       />
       <Tab
         onClick={() => history.push('/likes')}
-        title='Like'
+        title='Likes'
         icon={heart}
         titleColor={secondary}
       />

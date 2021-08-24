@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import heartOutlined from '../../assets/icons/heart-outlined.svg'
 import play from '../../assets/icons/play.svg'
 import pause from '../../assets/icons/pause.svg'
 import logoDeezer from '../../assets/images/logo-deezer.svg'
@@ -65,14 +64,12 @@ export const Actions = styled.div`
   row-gap: 1.6rem;
 `
 
-export const Like = styled.img.attrs({ src: heartOutlined })`
+export const LikeButton = styled.img`
   width: 4rem;
   height: auto;
 
   cursor: pointer;
 `
-
-export const LikeButton = styled(Like)``
 
 export const ToDeezer = styled.a``
 
