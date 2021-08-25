@@ -3,21 +3,16 @@ import { useSelector } from 'react-redux'
 
 import { RootState } from '../../store'
 
-import Search from '../../components/Search'
 import Tracks from '../../components/Tracks'
-
-import { Container, Title, LogoDeezer } from './styles'
+import Layout from '../../components/Layout'
 
 const Likes = () => {
   const tracks = useSelector((state: RootState) => state.like.tracks)
 
   return (
-    <Container>
-      <Title>Premusic - Deezer</Title>
-      <LogoDeezer />
-      <Search />
+    <Layout>
       <Tracks type='like' musics={tracks} />
-    </Container>
+    </Layout>
   )
 }
 

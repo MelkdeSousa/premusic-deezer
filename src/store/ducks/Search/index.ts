@@ -19,7 +19,7 @@ export const searchByTermThunk = createAsyncThunk(
       )
       return data
     } catch (err) {
-      alert(err)
+      console.error(err)
     }
   }
 )

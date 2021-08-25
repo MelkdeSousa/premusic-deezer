@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import magnifying from '../../assets/icons/search.svg'
 
 export const Container = styled.form`
-  padding: 2.4rem;
-
   display: flex;
   align-items: center;
   justify-content: space-evenly;

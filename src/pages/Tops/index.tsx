@@ -4,12 +4,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Tracks as TypeTracks } from '../../@types'
 import { RootState } from '../../store'
 import deezerAPI from '../../services/deezer.api'
-
-import Search from '../../components/Search'
-import Tracks from '../../components/Tracks'
-
-import { Container, Title, LogoDeezer } from './styles'
 import { searchByTermThunk } from '../../store/ducks/Search'
+
+import Tracks from '../../components/Tracks'
+import Layout from '../../components/Layout'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -31,7 +29,7 @@ const Home = () => {
 
       setTopMusics(lastMusics => [...lastMusics, ...musics])
     } catch (err) {
-      alert(err)
+      console.error(err)
     }
   }
 
@@ -62,10 +60,7 @@ const Home = () => {
   }, [indexSearch])
 
   return (
-    <Container>
-      <Title>Premusic - Deezer</Title>
-      <LogoDeezer />
-      <Search />
+    <Layout>
       <Tracks
         type='top'
         musics={
@@ -73,7 +68,7 @@ const Home = () => {
         }
         refEnd={observedRef}
       />
-    </Container>
+    </Layout>
   )
 }
 
