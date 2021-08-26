@@ -26,8 +26,12 @@ const Tracks = ({ musics, type, refEnd }: TracksProps) => {
           musics.map(renderMusics)
         ) : (
           <Error>
-            Você não favoritou nenhuma música <br />
-            😣{' '}
+            {type === 'like' && (
+              <>
+                Você não favoritou nenhuma música <br />
+                😣{' '}
+              </>
+            )}
           </Error>
         )}
         <li ref={refEnd} />

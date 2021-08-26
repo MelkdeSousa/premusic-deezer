@@ -39,8 +39,6 @@ const MusicCard = ({ music, type }: MusicCardProps) => {
   const dispatch = useDispatch()
   const tracks = useSelector((state: RootState) => state.like.tracks)
 
-  console.log()
-
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 

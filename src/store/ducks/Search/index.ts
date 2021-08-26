@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import { Tracks } from '../../../@types'
 
@@ -35,16 +35,18 @@ export const searchSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addCase(searchByTermThunk.pending, (state, action) => {
-      state.query = action.meta.arg.query
       state.loading = true
     })
 
-    builder.addCase(
-      searchByTermThunk.fulfilled,
-      (state, action: PayloadAction<Tracks>) => {
-        state.data.push(...action.payload)
-      }
-    )
+    builder.addCase(searchByTermThunk.fulfilled, (state, action) => {
+      console.log(state.query, action.meta.arg.query)
+
+      if (state.query !== action.meta.arg.query) {
+        state.data = action.payload
+      } else state.data.push(...action.payload)
+
+      state.query = action.meta.arg.query
+    })
 
     builder.addCase(searchByTermThunk.rejected, (state, action) => {})
   }
